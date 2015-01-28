@@ -24,7 +24,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'laravel_db',
+			'database'  => 'laravel',
 			'username'  => 'root',
 			'password'  => '',
 			'collation' => 'utf8_unicode_ci',

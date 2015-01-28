@@ -9,8 +9,8 @@ class UserTableSeeder extends Seeder
         // DB::table('user')->truncate();
 
         $user = array(
-            'username' => 'hongmin',
-            'password' => Hash::make('20140210'),
+            'username' => 'zhibiao',
+            'password' => Hash::make('blog2015'),
             'created_at' => DB::raw('NOW()'),
             'updated_at' => DB::raw('NOW()'),
         );
