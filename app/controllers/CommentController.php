@@ -7,7 +7,7 @@ class CommentController extends BaseController
     public function listComment()
     {
         $comments = Comment::orderBy('id', 'desc')->paginate(20);
-        $this->layout->title = 'Comment Listings';
+        $this->layout->title = '回复列表';
         $this->layout->main = View::make('dash')->nest('content', 'comments.list', compact('comments'));
     }
 
@@ -30,7 +30,7 @@ class CommentController extends BaseController
             $post->comments()->save($comment);
             /* redirect back to the form portion of the page */
             return Redirect::to(URL::previous() . '#reply')
-                ->with('success', 'Comment has been submitted and waiting for approval!');
+                ->with('success', '回复成功，等待审核!');
         } else {
             return Redirect::to(URL::previous() . '#reply')->withErrors($valid)->withInput();
         }
@@ -50,7 +50,7 @@ class CommentController extends BaseController
         $status = $comment->approved;
         $comment->delete();
         ($status === 'yes') ? $post->decrement('comment_count') : '';
-        return Redirect::back()->with('success', 'Comment deleted!');
+        return Redirect::back()->with('success', '评论删除成功!');
     }
 
     /* post functions */
@@ -62,7 +62,7 @@ class CommentController extends BaseController
         $comment->post->comment_count = Comment::where('post_id', '=', $comment->post->id)
             ->where('approved', '=', 1)->count();
         $comment->post->save();
-        return Redirect::back()->with('success', 'Comment ' . (($comment->approved === 'yes') ? 'Approved' : 'Disapproved'));
+        return Redirect::back()->with('success', '回复'.(($comment->approved === 'yes') ? '通过' : '不通过'));
     }
 
 }

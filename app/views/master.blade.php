@@ -19,23 +19,23 @@
                     <!-- Title Area -->
                     <li class="name"></li>
                     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                    <li class="toggle-topbar menu-icon"><a href="#"><span>菜单</span></a></li>
                 </ul>
                 <section class="top-bar-section">
                     <ul class="left">
-                        <li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">Home</a></li>
+                        <li class="{{(strcmp(URL::full(), URL::to('/')) == 0) ? 'active' : ''}}"><a href="{{URL::to('/')}}">主页</a></li>
                     </ul>
                     <ul class="right">
                         @if(Auth::check())
                             <li class="{{ (strpos(URL::current(), URL::to('admin/dash-board'))!== false) ? 'active' : '' }}">
-                                {{HTML::link('admin/dash-board','Dashboard')}}
+                                {{HTML::link('admin/dash-board','控制面板')}}
                             </li>
                             <li class="{{ (strpos(URL::current(), URL::to('logout'))!== false) ? 'active' : '' }}" >
-                                {{HTML::link('logout','Logout')}}
+                                {{HTML::link('logout','退出')}}
                             </li>
                         @else
                             <li class="{{ (strpos(URL::current(), URL::to('login'))!== false) ? 'active' : '' }}">
-                                {{HTML::link('login','Login')}}
+                                {{HTML::link('login','登录')}}
                             </li>
                         @endif
                     </ul>
@@ -43,8 +43,8 @@
             </nav>
             <div class="sub-header">
                 <hgroup>
-                    <h1>{{HTML::link('/','Laravel 4 Blog')}}</h1>
-                    <h2>Laravel 4 Simple Blog tutorial</h2>
+                    <h1>{{HTML::link('/','我的博客')}}</h1>
+                    <h2>旧人旧城旧时光</h2>
                 </hgroup>
             </div>
         </header>

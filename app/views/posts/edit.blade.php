@@ -1,5 +1,5 @@
 <h2 class="edit-post">
-    Edit Post
+    编辑文章
     <span class="right">{{ HTML::linkRoute('post.list','Cancel',null,['class' => 'button tiny radius']) }}</span>
 </h2>
 <hr>

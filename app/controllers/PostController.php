@@ -7,7 +7,7 @@ class PostController extends BaseController
     public function listPost()
     {
         $posts = Post::orderBy('id', 'desc')->paginate(10);
-        $this->layout->title = 'Post listings';
+        $this->layout->title = '文章列表';
         $this->layout->main = View::make('dash')->nest('content', 'posts.list', compact('posts'));
     }
 
@@ -25,20 +25,20 @@ class PostController extends BaseController
 
     public function newPost()
     {
-        $this->layout->title = 'New Post';
+        $this->layout->title = '创建文章';
         $this->layout->main = View::make('dash')->nest('content', 'posts.new');
     }
 
     public function editPost(Post $post)
     {
-        $this->layout->title = 'Edit Post';
+        $this->layout->title = '编辑文章';
         $this->layout->main = View::make('dash')->nest('content', 'posts.edit', compact('post'));
     }
 
     public function deletePost(Post $post)
     {
         $post->delete();
-        return Redirect::route('post.list')->with('success', 'Post is deleted!');
+        return Redirect::route('post.list')->with('success', '文章删除成功!');
     }
 
     /* post functions */
@@ -58,7 +58,7 @@ class PostController extends BaseController
             $post->comment_count = 0;
             $post->read_more = (strlen($post->content) > 120) ? substr($post->content, 0, 120) : $post->content;
             $post->save();
-            return Redirect::to('admin/dash-board')->with('success', 'Post is saved!');
+            return Redirect::to('admin/dash-board')->with('success', '文章保存成功!');
         } else
             return Redirect::back()->withErrors($valid)->withInput();
     }
@@ -80,9 +80,9 @@ class PostController extends BaseController
             $post->read_more = (strlen($post->content) > 120) ? substr($post->content, 0, 120) : $post->content;
             if (count($post->getDirty()) > 0) /* avoiding resubmission of same content */ {
                 $post->save();
-                return Redirect::back()->with('success', 'Post is updated!');
+                return Redirect::back()->with('success', '文章更新成功!');
             } else
-                return Redirect::back()->with('success', 'Nothing to update!');
+                return Redirect::back()->with('success', '文章没有变动!');
         } else
             return Redirect::back()->withErrors($valid)->withInput();
     }

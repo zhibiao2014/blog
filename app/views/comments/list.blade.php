@@ -1,13 +1,13 @@
-<h2 class="comment-listings">Comment listings</h2><hr>
+<h2 class="comment-listings">回复列表</h2><hr>
 <table>
     <thead>
     <tr>
-        <th>Commenter</th>
-        <th>Email</th>
-        <th>At Post</th>
-        <th>Approved</th>
-        <th>Comment Delete</th>
-        <th>Comment View</th>
+        <th>评论者</th>
+        <th>邮箱</th>
+        <th>主题</th>
+        <th>通过</th>
+        <th>删除</th>
+        <th>查看</th>
     </tr>
     </thead>
     <tbody>
@@ -18,11 +18,11 @@
         <td>{{$comment->post->title}}</td>
         <td>
             {{Form::open(['route'=>['comment.update',$comment->id]])}}
-            {{Form::select('status',['yes'=>'Yes','no'=>'No'],$comment->approved,['style'=>'margin-bottom:0','onchange'=>'submit()'])}}
+            {{Form::select('status',['yes'=>'是','no'=>'否'],$comment->approved,['style'=>'margin-bottom:0','onchange'=>'submit()'])}}
             {{Form::close()}}
         </td>
-        <td>{{HTML::linkRoute('comment.delete','Delete',$comment->id)}}</td>
-        <td>{{HTML::linkRoute('comment.show','Quick View',$comment->id,['data-reveal-id'=>'comment-show','data-reveal-ajax'=>'true'])}}</td>
+        <td>{{HTML::linkRoute('comment.delete','DEL',$comment->id)}}</td>
+        <td>{{HTML::linkRoute('comment.show','VIEW',$comment->id,['data-reveal-id'=>'comment-show','data-reveal-ajax'=>'true'])}}</td>
     </tr>
     @endforeach
     </tbody>

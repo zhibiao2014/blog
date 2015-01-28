@@ -1,5 +1,5 @@
 <div id="reply">
-    <h2>Leave a Reply</h2>
+    <h2>参与评论</h2>
     @if(Session::has('success'))
         <div data-alert class="alert-box round">
             {{Session::get('success')}}
@@ -9,19 +9,19 @@
     {{ Form::open(['route'=>['comment.new',$post->id]]) }}
         <div class="row">
             <div class="small-5 large-5 column">
-                {{ Form::label('commenter','Name:') }}
+                {{ Form::label('commenter','名字:') }}
                 {{ Form::text('commenter',Input::old('commenter')) }}
             </div>
         </div>
         <div class="row">
             <div class="small-5 large-5 column">
-                {{ Form::label('email','Email:') }}
+                {{ Form::label('email','邮箱:') }}
                 {{ Form::text('email',Input::old('email')) }}
             </div>
         </div>
         <div class="row">
             <div class="small-7 large-7 column">
-                {{ Form::label('comment','Comment:') }}
+                {{ Form::label('comment','内容:') }}
                 {{ Form::textarea('comment',Input::old('comment'),['rows'=>5]) }}
             </div>
         </div>
@@ -33,6 +33,6 @@
             </div>
         @endforeach
     @endif
-    {{ Form::submit('Submit',['class'=>'button tiny radius']) }}
+    {{ Form::submit('提交',['class'=>'button tiny radius']) }}
     {{ Form::close() }}
 </div>

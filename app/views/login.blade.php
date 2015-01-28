@@ -1,12 +1,12 @@
 <div class="small-6 large-6 column login-form">
         {{ Form::open(['action' => 'BlogController@postLogin']) }}
         <fieldset>
-            <legend>Login</legend>
-            {{ Form::label('username','Username') }}
+            <legend>登录</legend>
+            {{ Form::label('username','用户名') }}
             {{ Form::text('username',Input::old('username'),['placeholder'=>'Your nice name']) }}
-            {{ Form::label('password','Password') }}
+            {{ Form::label('password','密码') }}
             {{ Form::password('password',['placeholder'=>'Password here']) }}
-            {{ Form::submit('Login',['class'=>'button tiny radius']) }}
+            {{ Form::submit('提交',['class'=>'button tiny radius']) }}
         </fieldset>
         {{ Form::close() }}
         @if($errors->has())

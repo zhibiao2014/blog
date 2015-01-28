@@ -19,7 +19,7 @@ class BlogController extends BaseController
     {
         $posts = Post::orderBy('id', 'desc')->paginate(10);
         $posts->getFactory()->setViewName('pagination::simple');
-        $this->layout->title = 'Home Page | Laravel 4 Blog';
+        $this->layout->title = '我的博客主页';
         $this->layout->main = View::make('home')->nest('content', 'index', compact('posts'));
     }
 
@@ -30,14 +30,14 @@ class BlogController extends BaseController
             ->paginate(10);
         $posts->getFactory()->setViewName('pagination::slider');
         $posts->appends(['s' => $searchTerm]);
-        $this->layout->with('title', 'Search: ' . $searchTerm);
+        $this->layout->with('title', '搜索: ' . $searchTerm);
         $this->layout->main = View::make('home')
             ->nest('content', 'index', ($posts->isEmpty()) ? ['notFound' => true] : compact('posts'));
     }
 
     public function getLogin()
     {
-        $this->layout->title = 'login';
+        $this->layout->title = '登录';
         $this->layout->main = View::make('login');
     }
 

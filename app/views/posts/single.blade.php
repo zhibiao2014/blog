@@ -5,7 +5,7 @@
         </h1>
         <div class="clearfix">
             <span class="left date">{{explode(' ',$post->created_at)[0]}}</span>
-            <span class="right label">{{HTML::link('#reply','Reply',['style'=>'color:inherit'])}} </span>
+            <span class="right label">{{HTML::link('#reply','回复',['style'=>'color:inherit'])}} </span>
         </div>
     </header>
     <div class="post-content">
@@ -17,7 +17,7 @@
 </article>
 <section class="comments">
     @if(!$comments->isEmpty())
-        <h2>Comments on {{$post->title}}</h2>
+        <h2>“{{$post->title}}” 的评论</h2>
         <ul>
             @foreach($comments as $comment)
                 <li>
@@ -39,7 +39,7 @@
             @endforeach
         </ul>
     @else
-        <h2>No Comments on {{$post->title}}</h2>
+        <h2>“{{$post->title}}”还没有回复</h2>
     @endif
     <!--comment form -->
     @include('comments.commentform')

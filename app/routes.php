@@ -49,8 +49,8 @@ Route::group(['prefix' => 'admin','before' => 'auth'],function()
     Route::get('dash-board',function()
     {
         $layout = View::make('master');
-        $layout->title = 'DashBoard';
-        $layout->main = View::make('dash')->with('content','Hi admin, Welcome to Dashboard!');
+        $layout->title = '我的后台管理';
+        $layout->main = View::make('dash')->with('content','<h3>欢迎光临!</h3>');
         return $layout;
     });
     Route::get('/post/list',['as' => 'post.list','uses' => 'PostController@listPost']);
