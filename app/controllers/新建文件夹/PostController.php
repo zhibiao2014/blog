@@ -16,7 +16,7 @@ class PostController extends BaseController
         $comments = $post->comments()->where('approved', '=', 1)->get();
         $this->layout->title = $post->title;
         $this->layout->main = View::make('home')->nest('content', 'posts.single', compact('post', 'comments'));
-
+        
         View::composer('sidebar', function($view)
         {
             $view->recentPosts = Post::orderBy('id','desc')->take(5)->get();

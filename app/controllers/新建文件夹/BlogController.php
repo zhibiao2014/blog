@@ -43,23 +43,26 @@ class BlogController extends BaseController
 
     public function postLogin()
     {
-        $credentials = [
-            'username' => Input::get('username'),
-            'password' => Input::get('password')
+        $user = [
+        'username'=>Input::get('username'),
+        'password'=>Input::get('password')
         ];
         $rules = [
-            'username' => 'required',
-            'password' => 'required'
+        'username' =>'required',
+        'password'=>'required'
         ];
-        $validator = Validator::make($credentials, $rules);
-        if ($validator->passes()) {
-            if (Auth::attempt($credentials))
+        $validator = Validator::make($user,$rules);
+        if (Auth::attempt($user)){
                 return Redirect::to('admin/dash-board');
             return Redirect::back()->withInput()->with('failure', 'username or password is invalid!');
-        } else {
+        } 
+        else 
+        {
             return Redirect::back()->withErrors($validator)->withInput();
+
         }
     }
+
 
     public function getLogout()
     {
